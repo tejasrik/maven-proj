@@ -22,7 +22,8 @@ phases:
   build:
     commands:
      # - mvn surefire-report:report    
-      - mvn clean package     
+      - mvn clean package 
+      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
       - cat result.json
